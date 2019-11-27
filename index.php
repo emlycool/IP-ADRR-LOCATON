@@ -73,21 +73,22 @@ $record = $reader->city(get_ip_address());
 print($record->country->isoCode . "\n"); // 'US'
 print($record->country->name . "\n"); // 'United States'
 print($record->country->names['zh-CN'] . "\n"); // '美国'
-$client_ip = $_SERVER['REMOTE_ADDR'];
-echo "</br>";
-echo $client_ip;
+$client_country = $record->country->isoCode;
 // $db =new Reader('GeoLite2-City.mmdb');
 // $client_ip=$db->city($_SERVER['REMOTE_ADDR']);
 // $client_country=$client_ip->country->isoCode;
 
 // Specification of allowed_countries
-// $allowed_countries=array("US","CA");
+ $allowed_countries=array("NG");
 
-// // Blocking Logic
-// if(!in_array($client_country,$allowed_countries)) {
-//   header("HTTP/1.0 403 Forbidden");
-//   echo "<h1>Access Forbidden!</h1>";
-//   echo "<p>You are accessing from $client_country which is forbidden.</p>";
-//   exit();
-// }
+// Blocking Logic
+if(!in_array($client_country,$allowed_countries)) {
+  header("HTTP/1.0 403 Forbidden");
+  echo "<h1>Access Forbidden!</h1>";
+  echo "<p>You are accessing from $client_country which is forbidden.</p>";
+  exit();
+}
+else{
+    echo "You are allowed access to view this page";
+}
 ?>
