@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 use GeoIp2\Database\Reader;
 
 $reader = new Reader('GeoLite2-City.mmdb');
-$record = $reader->city('$_SERVER["REMOTE_ADDR"]');
+$record = $reader->city($_SERVER["REMOTE_ADDR"]);
 
 print($record->country->isoCode . "\n"); // 'US'
 print($record->country->name . "\n"); // 'United States'
