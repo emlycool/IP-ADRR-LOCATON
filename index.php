@@ -72,7 +72,7 @@ $record = $reader->city(get_ip_address());
 
 print($record->country->isoCode . "\n"); // 'US'
 print($record->country->name . "\n"); // 'United States'
-print($record->country->names['zh-CN'] . "\n"); // '美国'
+//print($record->country->names['zh-CN'] . "\n"); // '美国'
 $client_country = $record->country->isoCode;
 // $db =new Reader('GeoLite2-City.mmdb');
 // $client_ip=$db->city($_SERVER['REMOTE_ADDR']);
